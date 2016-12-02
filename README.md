@@ -1,4 +1,5 @@
 # feathers-subscriptions-manager
+[![Build Status](https://travis-ci.org/NicoKnoll/feathers-subscriptions-manager.svg?branch=master)](https://travis-ci.org/NicoKnoll/feathers-subscriptions-manager)
 > A subscriptions manager for feathers.js reactive subscriptions through feathers-reactive.
 
 The Feathers Subscription Manager allows you to wait for multiple subscriptions and then call a shared callback function. After the initial load this function will be called every time one of the subscriptions get updated.
