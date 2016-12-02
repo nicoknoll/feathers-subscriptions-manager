@@ -1,5 +1,5 @@
 # feathers-subscriptions-manager
-[![Build Status](https://travis-ci.org/NicoKnoll/feathers-subscriptions-manager.svg?branch=master)](https://travis-ci.org/NicoKnoll/feathers-subscriptions-manager)
+[![Build Status](https://travis-ci.org/nicoknoll/feathers-subscriptions-manager.svg?branch=master)](https://travis-ci.org/nicoknoll/feathers-subscriptions-manager)
 [![Downloads](https://img.shields.io/npm/dt/feathers-subscriptions-manager.svg)](https://www.npmjs.com/package/feathers-subscriptions-manager)
 
 > A subscriptions manager for feathers.js reactive subscriptions through feathers-reactive.
