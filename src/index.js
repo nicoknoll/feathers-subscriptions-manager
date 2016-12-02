@@ -2,6 +2,7 @@ class SubsManager {
 
   constructor () {
     this._state = {};
+    this._initial = true;
     this._subscriptions = [];
     this._countSubscriptions = 0;
     this._readyCallback = () => {};
@@ -62,14 +63,13 @@ class SubsManager {
   }
 
   subscriptionReady () {
-    let initial = false;
     if (this._countSubscriptions > 0) {
       this._countSubscriptions -= 1;
-      initial = true;
     }
 
     if (this._countSubscriptions === 0) {
-      this._readyCallback(this.state, initial);
+      this._readyCallback(this.state, this._initial);
+      this._initial = false;
     }
   }
 
