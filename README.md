@@ -15,11 +15,11 @@ npm install --save feathers-reactive
 ## How does it work
 The Feathers Subscription Manager will let you register all the subscriptions (**addSubscription()**) you want and watch them. Each of the subscriptions will have some kind of a callback action (examples below). This _action_ has to return an object, that will be merged into the Subscriptions Manager's state.
 
-When all subscriptions have received their data the **.ready(callback(data))** callback method will be called and will have the merged state object as first parameter. In this function you can e.g. have a "renderLayout" function.
+When all subscriptions have received their data the **.ready(callback(data, initial))** callback method will be called and will have the merged state object as first parameter. In this function you can e.g. have a "renderLayout" function.
 
 The callback will now be called on every change of one of the watched subscriptions as well.
 
-(optional) The second parameter of the callback function (_initial_) is a boolean that will let you know if it is the initial call (True) or an update call (False)
+(optional) The second parameter of the callback function (_initial_) is a boolean that will let you know if it is the initial call (True) or an update call (False).
 
 
 ## Usage
