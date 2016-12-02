@@ -65,10 +65,10 @@ subsManager.addSubscription(findUsersCursor, (users) => {
 ### ready(callback(_data_, _inital_))
 
 ```js
-subsManager.ready((data, inital) => {
+subsManager.ready((data, initial) => {
 	// all subscriptions are ready 
 	// you can use the resulting object as "data"
-	if(intial) {
+	if(initial) {
 		renderLayout(data);
 	} else {
 		updateLayout(data);
