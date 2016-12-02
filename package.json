@@ -1,10 +1,22 @@
 {
   "name": "feathers-subscriptions-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A subscriptions manager for feathers.js reactive subscriptions through feathers-reactive.",
   "main": "lib/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "npm run compile && npm run browserify",
+    "publish": "git push origin --tags && npm run changelog && git push origin",
+    "browserify": "mkdir -p dist/ && browserify src/index.js -t babelify --standalone feathers-subscriptions-manager --outfile dist/feathers-subscriptions-manager.js",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "changelog": "github_changelog_generator && git add CHANGELOG.md && git commit -am \"Updating changelog\"",
+    "compile": "rimraf lib/ && babel -d lib/ src/",
+    "watch": "babel --watch -d lib/ src/",
+    "lint": "eslint-if-supported semistandard --fix",
+    "mocha": "mocha --opts mocha.opts",
+    "test": "npm run compile && npm run lint && npm run coverage",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --opts mocha.opts"
   },
   "repository": {
     "type": "git",
@@ -24,24 +36,8 @@
     "url": "https://github.com/NicoKnoll/feathers-subscriptions-manager/issues"
   },
   "homepage": "https://github.com/NicoKnoll/feathers-subscriptions-manager",
-
   "engines": {
     "node": ">= 4"
-  },
-  "scripts": {
-    "prepublish": "npm run compile && npm run browserify",
-    "publish": "git push origin --tags && npm run changelog && git push origin",
-    "browserify": "mkdir -p dist/ && browserify src/index.js -t babelify --standalone feathers-subscriptions-manager --outfile dist/feathers-subscriptions-manager.js",
-    "release:patch": "npm version patch && npm publish",
-    "release:minor": "npm version minor && npm publish",
-    "release:major": "npm version major && npm publish",
-    "changelog": "github_changelog_generator && git add CHANGELOG.md && git commit -am \"Updating changelog\"",
-    "compile": "rimraf lib/ && babel -d lib/ src/",
-    "watch": "babel --watch -d lib/ src/",
-    "lint": "eslint-if-supported semistandard --fix",
-    "mocha": "mocha --opts mocha.opts",
-    "test": "npm run compile && npm run lint && npm run coverage",
-    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --opts mocha.opts"
   },
   "semistandard": {
     "env": [
