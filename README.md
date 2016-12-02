@@ -40,7 +40,7 @@ const userService = app.service('users');
 const findUsersCursor = userService.find(...);
 ```
 
-_action_ can be a string, a function or a promise.
+_action_ can be a string or a function.
 
 ```js
 /* Use with strings */
@@ -54,17 +54,6 @@ subsManager.addSubscription(findUsersCursor, 'users');
 /* Result: {users: users.data} */
 subsManager.addSubscription(findUsersCursor, (users) => {
 	return {users: users.data};
-});
-
-
-/* Use with promise */
-/* Recommended if you need to fetch additional async data before finsihing the call */
-/* Result: {users: data} */
-subsManager.addSubscription(findUsersCursor, (users) => {
-	return new Promise((data) => {
-		sleep(2000); // a long async operation
-		return {users: data}
-	});
 });
 
 ```
