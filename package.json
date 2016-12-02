@@ -1,0 +1,80 @@
+{
+  "name": "feathers-subscriptions-manager",
+  "version": "1.0.0",
+  "description": "A subscriptions manager for feathers.js reactive subscriptions through feathers-reactive.",
+  "main": "lib/index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/NicoKnoll/feathers-subscriptions-manager.git"
+  },
+  "keywords": [
+    "feathers",
+    "feathers-plugin"
+  ],
+  "author": {
+    "name": "Nico Knoll",
+    "email": "mail@nico.is",
+    "url": "https://nico.is"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NicoKnoll/feathers-subscriptions-manager/issues"
+  },
+  "homepage": "https://github.com/NicoKnoll/feathers-subscriptions-manager",
+
+  "engines": {
+    "node": ">= 4"
+  },
+  "scripts": {
+    "prepublish": "npm run compile && npm run browserify",
+    "publish": "git push origin --tags && npm run changelog && git push origin",
+    "browserify": "mkdir -p dist/ && browserify src/index.js -t babelify --standalone feathers-subscriptions-manager --outfile dist/feathers-subscriptions-manager.js",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "changelog": "github_changelog_generator && git add CHANGELOG.md && git commit -am \"Updating changelog\"",
+    "compile": "rimraf lib/ && babel -d lib/ src/",
+    "watch": "babel --watch -d lib/ src/",
+    "lint": "eslint-if-supported semistandard --fix",
+    "mocha": "mocha --opts mocha.opts",
+    "test": "npm run compile && npm run lint && npm run coverage",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --opts mocha.opts"
+  },
+  "semistandard": {
+    "env": [
+      "mocha"
+    ],
+    "ignore": [
+      "/lib"
+    ]
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "feathers-commons": "^0.8.7",
+    "feathers-reactive": "^0.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-core": "^6.4.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.7.7",
+    "babel-plugin-transform-function-bind": "^6.5.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "eslint-if-supported": "^1.0.1",
+    "feathers": "^2.0.0",
+    "feathers-hooks": "^1.5.2",
+    "istanbul": "^1.1.0-alpha.1",
+    "mocha": "^3.1.2",
+    "rimraf": "^2.5.2",
+    "rxjs": "^5.0.0-beta.8",
+    "semistandard": "^9.1.0"
+  }
+}
