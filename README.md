@@ -62,7 +62,7 @@ subsManager.addSubscription(findUsersCursor, (users) => {
 ```
 
 
-### ready(callback(_data_, _inital_))
+### ready(callback(_data_, _initial_))
 
 ```js
 subsManager.ready((data, initial) => {
